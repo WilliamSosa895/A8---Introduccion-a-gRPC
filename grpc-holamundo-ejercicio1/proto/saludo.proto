@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package saludo;
+
+message SaludoRequest {
+  string nombre = 1;
+  string idioma = 2;
+}
+
+message SaludoReply {
+  string mensaje = 1;
+}
+
+service Saludador {
+  rpc SayHello (SaludoRequest) returns (SaludoReply);
+}

@@ -1,0 +1,32 @@
+syntax = "proto3";
+
+package saludo;
+
+import "google/protobuf/empty.proto";
+
+message SaludoRequest {
+  string nombre = 1;
+  string idioma = 2;
+}
+
+message SaludoReply {
+  string mensaje = 1;
+}
+
+message HoraServidorReply {
+  string fecha_hora = 1;
+}
+
+message SaludarListaRequest {
+  repeated string nombres = 1;
+}
+
+message SaludarListaReply {
+  string mensaje = 1;
+}
+
+service Saludador {
+  rpc SayHello (SaludoRequest) returns (SaludoReply);
+  rpc ObtenerHoraServidor (google.protobuf.Empty) returns (HoraServidorReply);
+  rpc SaludarLista (SaludarListaRequest) returns (SaludarListaReply);
+}
