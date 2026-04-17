@@ -1,0 +1,40 @@
+syntax = "proto3";
+
+package soporte;
+
+service SoporteService {
+  rpc GenerarTicket(NuevoTicketRequest) returns (Ticket);
+  rpc AtenderSiguiente(AtenderRequest) returns (TicketAtendido);
+  rpc VerPendientes(Vacio) returns (ResumenPendientes);
+}
+
+message NuevoTicketRequest {
+  string prioridad = 1;
+  string cliente = 2;
+  string descripcion = 3;
+}
+
+message Ticket {
+  string codigo = 1;
+  string prioridad = 2;
+  string cliente = 3;
+  string descripcion = 4;
+}
+
+message AtenderRequest {
+  string agente = 1;
+}
+
+message TicketAtendido {
+  bool hay_ticket = 1;
+  string mensaje = 2;
+  Ticket ticket = 3;
+}
+
+message ResumenPendientes {
+  int32 alta = 1;
+  int32 media = 2;
+  int32 baja = 3;
+}
+
+message Vacio {}

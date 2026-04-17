@@ -1,0 +1,39 @@
+syntax = "proto3";
+
+package callcenter;
+
+service CallCenterService {
+  rpc GenerarTicket(NuevoTicketRequest) returns (Ticket);
+  rpc AtenderPorIdioma(AtenderIdiomaRequest) returns (TicketAtendido);
+  rpc VerEstadoIdiomas(Vacio) returns (stream EstadoIdioma);
+}
+
+message NuevoTicketRequest {
+  string idioma = 1;
+  string cliente = 2;
+}
+
+message Ticket {
+  string codigo = 1;
+  string idioma = 2;
+  string cliente = 3;
+}
+
+message AtenderIdiomaRequest {
+  string idioma = 1;
+  string agente = 2;
+}
+
+message TicketAtendido {
+  bool hay_ticket = 1;
+  string mensaje = 2;
+  Ticket ticket = 3;
+}
+
+message EstadoIdioma {
+  string idioma = 1;
+  int32 pendientes = 2;
+  repeated string ultimos = 3;
+}
+
+message Vacio {}

@@ -1,0 +1,17 @@
+{
+  "next_num": {
+    "medicina_general": 1,
+    "pediatria": 1,
+    "odontologia": 1
+  },
+  "colas": {
+    "medicina_general": [],
+    "pediatria": [],
+    "odontologia": []
+  },
+  "ultimos": {
+    "medicina_general": [],
+    "pediatria": [],
+    "odontologia": []
+  }
+}

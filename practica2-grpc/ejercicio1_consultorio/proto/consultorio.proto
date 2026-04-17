@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package consultorio;
+
+service ConsultorioService {
+  rpc GenerarTurno(NuevoTurnoRequest) returns (Turno);
+  rpc AtenderSiguiente(AtenderRequest) returns (TurnoAtendido);
+  rpc VerUltimos(Vacio) returns (stream UltimoLlamado);
+}
+
+message NuevoTurnoRequest {
+  string especialidad = 1;
+  string paciente = 2;
+}
+
+message Turno {
+  string codigo = 1;
+  string especialidad = 2;
+  string paciente = 3;
+}
+
+message AtenderRequest {
+  string especialidad = 1;
+  string escritorio = 2;
+}
+
+message TurnoAtendido {
+  bool hay_turno = 1;
+  string mensaje = 2;
+  Turno turno = 3;
+}
+
+message Vacio {}
+
+message UltimoLlamado {
+  string especialidad = 1;
+  repeated string codigos = 2;
+}
